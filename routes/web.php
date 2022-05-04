@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Lombas;
+use App\Http\Livewire\Pesertas;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,7 @@ use App\Http\Livewire\Lombas;
 |
 */
 Route::get('lombas', Lombas::class)->middleware('auth')->name('lomba');
+Route::get('pesertas/{idx}', Pesertas::class)->middleware('auth')->name('peserta');
 Route::get('/', function () {
     return view('welcome');
 });

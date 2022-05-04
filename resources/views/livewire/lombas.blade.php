@@ -15,7 +15,7 @@
                   </div>
                 </div>
             @endif
-            <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white py-1 mb-6 px-3 rounded my-3 mt-1">Buat Lomba Baru</button>
+            <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white py-1 mb-6 px-3 rounded my-3 mt-1">Tambahkan Lomba Baru</button>
             @if($isOpen)
                 @include('livewire.lombas_create')
             @endif
@@ -24,7 +24,8 @@
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2 w-20">ID.</th>
                         <th class="px-4 py-2">Jenis</th>
-                        <th class="px-4 py-2">Perlombaan</th>
+                        <th class="px-4 py-2">Nama Perlombaan</th>
+                        <th class="px-4 py-2">Peserta</th>
                         <th class="px-4 py-2 w-60">Aksi</th>
                     </tr>
                 </thead>
@@ -35,8 +36,11 @@
                         <td class="border px-4 py-2">{{ $lomba->jenis }}</td>
                         <td class="border px-4 py-2">{{ $lomba->nama }}</td>
                         <td class="border px-4 py-2 text-center">
-                        <button wire:click="edit({{ "'".$lomba->id."'" }})" class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded">Edit</button>
-                            <button wire:click="delete({{ $lomba->id }})" class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded">Hapus</button>
+                            <button wire:click="peserta({{ "'".$lomba->id."'" }})" class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded">Registrasi</button>
+                        </td>
+                        <td class="border px-4 py-2 text-center">
+                            <button wire:click="edit({{ "'".$lomba->id."'" }})" class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded">Edit</button>
+                            <button wire:click="delete({{ "'".$lomba->id."'" }})" class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded">Hapus</button>
                         </td>
                     </tr>
                     @endforeach

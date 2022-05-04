@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Lomba;
-
+use App\Models\Peserta;
 class Lombas extends Component
 {
     public $lombas, $jenis, $nama, $lomba_id;
@@ -31,7 +31,7 @@ class Lombas extends Component
 
     public function resetInputFields(){
         $this->lomba_id = '';
-        $this->jenis = '';
+        $this->jenis = 'Paduan Suara';
         $this->nama = '';
         $this->gambar = '';
     }
@@ -64,7 +64,8 @@ class Lombas extends Component
 
     public function delete($id){
         Lomba::find($id)->delete();
-        session()->flash('message','Lomba Dihapus.');
+        Peserta::where('lomba_id','=',$id)->delete();
+        session()->flash('message','Lomba & Pesertanya Dihapus.');
     }
 
     public function peserta($idx){
