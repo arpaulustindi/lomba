@@ -24,6 +24,9 @@
                     <x-jet-nav-link href="{{ route('onboard') }}" :active="request()->routeIs('onboard')">
                         {{ __('Onboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('penilaian') }}" :active="request()->routeIs('penilaian')">
+                        {{ __('Penilaian') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
