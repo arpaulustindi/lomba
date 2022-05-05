@@ -14,4 +14,8 @@ class Peserta extends Model
         'urutan',
         'nama'
     ];
+
+    protected $casts = [
+        'aktif' => 'boolean',
+    ];
 }

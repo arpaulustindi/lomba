@@ -16,4 +16,8 @@ class Lomba extends Model
         'jenis',
         'nama'
     ];
+
+    protected $casts = [
+        'aktif' => 'boolean',
+    ];
 }

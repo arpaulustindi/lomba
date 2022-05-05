@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Lombas;
 use App\Http\Livewire\Pesertas;
 use App\Http\Livewire\Juris;
+use App\Http\Livewire\Onboard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,7 @@ use App\Http\Livewire\Juris;
 Route::get('lombas', Lombas::class)->middleware('auth')->name('lomba');
 Route::get('pesertas/{idx}', Pesertas::class)->middleware('auth')->name('peserta');
 Route::get('juris', Juris::class)->middleware('auth')->name('juri');
+Route::get('onboard', Onboard::class)->middleware('auth')->name('onboard');
 Route::get('/', function () {
     return view('welcome');
 });
