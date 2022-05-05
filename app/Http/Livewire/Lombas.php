@@ -9,7 +9,7 @@ class Lombas extends Component
 {
     public $lombas, $jenis, $nama, $lomba_id;
     public $isOpen = 0;
-
+    public $id_aktif = -1;
     public function render()
     {
         $this->lombas = Lomba::all();
@@ -71,4 +71,28 @@ class Lombas extends Component
     public function peserta($idx){
         return redirect()->to('pesertas/'.$idx);
     }
+
+    public function aktivasi($id){
+        if($this->id_aktif != -1){            
+            $this->deaktivasi($this->id_aktif);            
+        } else {
+            $cek = Lomba::where('aktif','=', true);
+            if($cek->exists()){
+                $cek->update(['aktif'=>false]);
+            }
+        }
+
+        $data_aktif = Lomba::where('id','=',$id);
+        $data_aktif->update([
+            'aktif' => true,
+        ]);
+        $this->id_aktif = $id;
+    }
+    public function deaktivasi($id){
+        $data_aktif = Lomba::where('id','=',$id);
+        $data_aktif->update([
+            'aktif' => false,
+        ]);
+    }
+
 }

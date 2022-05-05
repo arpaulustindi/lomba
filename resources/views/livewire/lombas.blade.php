@@ -25,6 +25,7 @@
                         <th class="px-4 py-2 w-20">ID.</th>
                         <th class="px-4 py-2">Jenis</th>
                         <th class="px-4 py-2">Nama Perlombaan</th>
+                        <th class="px-4 py-2">Aktif</th>
                         <th class="px-4 py-2">Peserta</th>
                         <th class="px-4 py-2 w-60">Aksi</th>
                     </tr>
@@ -35,6 +36,14 @@
                         <td class="border px-4 py-2">{{ $lomba->id }}</td>
                         <td class="border px-4 py-2">{{ $lomba->jenis }}</td>
                         <td class="border px-4 py-2">{{ $lomba->nama }}</td>
+                        <td class="border px-4 py-2 text-center">
+                            @if($lomba->aktif == false)
+                                <button wire:click="aktivasi({{ "'".$lomba->id."'" }})" class="bg-gray-500 hover:bg-gray-700 text-white py-1 px-3 rounded">Aktifkan</button>
+                            @else
+                                <button wire:click="deaktivasi({{ "'".$lomba->id."'" }})" class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded">Nonaktifkan</button>
+                            @endif
+                            
+                        </td>
                         <td class="border px-4 py-2 text-center">
                             <button wire:click="peserta({{ "'".$lomba->id."'" }})" class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded">Registrasi</button>
                         </td>
