@@ -22,7 +22,7 @@ class Onboard extends Component
 
     public function tahapan($id, $thp){
         $data_aktif = Peserta::where('id','=',$id);
-        if($tahapan == 3){
+        if($thp == 3){
             if($data_aktif->nilai1 == -1){
                 session()->flash('message','Juri 1 Belum Menilai.');
                 return false;
