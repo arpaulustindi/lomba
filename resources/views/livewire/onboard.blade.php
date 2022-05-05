@@ -23,7 +23,6 @@
                         <th class="px-4 py-2">Nama Peserta</th>
                         <th class="px-4 py-2">Tahapan</th>
                         <th class="px-4 py-2">Nilai</th>
-                        <th class="px-4 py-2">Peringkat</th> 
                         <th class="px-4 py-2">Kategori</th>
                     </tr>
                 </thead>
@@ -57,7 +56,6 @@
                             
                         </td>
                         <td class="border px-4 py-2">@if($peserta->nilai == -1) {{ "BELUM" }} @else {{ $peserta->nilai }} @endif</td>
-                        <td class="border px-4 py-2">@if($peserta->nilai == -1) {{ "-" }} @else {{ $peserta->peringkat }} @endif</td>
                         <td class="border px-4 py-2">
                             @if($peserta->nilai == -1) 
                                 {{ "-" }} 

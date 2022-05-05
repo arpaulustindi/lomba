@@ -47,7 +47,7 @@ class Onboard extends Component
             } else {
                 $data_aktif->update([
                     'tahap' => $thp,
-                    'nilai' => $total,
+                    'nilai' => $nilai_,
                 ]);
             }
             /*$data_aktif->update([
