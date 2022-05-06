@@ -15,18 +15,27 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('lomba') }}" :active="request()->routeIs('lomba')">
-                        {{ __('Lomba') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('juri') }}" :active="request()->routeIs('juri')">
-                        {{ __('Juri') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('onboard') }}" :active="request()->routeIs('onboard')">
-                        {{ __('Onboard') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('penilaian') }}" :active="request()->routeIs('penilaian')">
-                        {{ __('Penilaian') }}
-                    </x-jet-nav-link>
+                    @if(auth()->user()->level == 'ADMIN')                    
+                        <x-jet-nav-link href="{{ route('lomba') }}" :active="request()->routeIs('lomba')">
+                            {{ __('Lomba') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('juri') }}" :active="request()->routeIs('juri')">
+                            {{ __('Juri') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('onboard') }}" :active="request()->routeIs('onboard')">
+                            {{ __('Onboard') }}
+                        </x-jet-nav-link>
+                    @endif
+                    @if(auth()->user()->level == 'OPERATOR')
+                        <x-jet-nav-link href="{{ route('onboard') }}" :active="request()->routeIs('onboard')">
+                            {{ __('Onboard') }}
+                        </x-jet-nav-link>
+                    @endif
+                    @if(auth()->user()->level == 'JURI')
+                        <x-jet-nav-link href="{{ route('penilaian') }}" :active="request()->routeIs('penilaian')">
+                            {{ __('Penilaian') }}
+                        </x-jet-nav-link>
+                    @endif
                 </div>
             </div>
 

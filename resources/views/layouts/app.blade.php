@@ -36,11 +36,14 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                
             </main>
+            
         </div>
   
         @stack('modals')
   
         @livewireScripts
+        
     </body>
 </html>

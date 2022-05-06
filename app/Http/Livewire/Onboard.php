@@ -12,6 +12,7 @@ class Onboard extends Component
     public $pesertas, $lombas, $lomba_id, $urutan, $nama, $juri1, $nilai1, $juri2, $nilai2, $juri3, $nilai3, $nilai, $rangking, $medali, $aktif, $tahap, $peserta_id;
     public $lbx;
     public $id_aktif = -1;
+    public $thp_aktif = -1;
 
     public function render()
     {      

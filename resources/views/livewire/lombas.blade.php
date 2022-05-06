@@ -55,6 +55,8 @@
                     @endforeach
                 </tbody>
             </table>
+            <div style="height:20px;"></div>
+            <p class="font-bold">supported by: <img src="{{ url('img/himasi.png')}}" style="width:40px;height:40px;display:inline"/> Himpunan Mahasiswa Sistem Informasi Polnustar</p>
         </div>
     </div>
 </div>

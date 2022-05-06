@@ -1,6 +1,10 @@
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+        @if($lombas == null)
+        TIDAK ADA LOMBA AKTIF
+        @else
         ON BOARD : Lomba {{ $lombas->nama }}
+        @endif
     </h2>
 </x-slot>
 <div class="py-12">
@@ -16,6 +20,7 @@
                 </div>
             @endif
             
+            @if($lombas != null)
             <table class="table-auto w-full">
                 <thead>
                     <tr class="bg-gray-100">
@@ -26,13 +31,15 @@
                         <th class="px-4 py-2">Kategori</th>
                     </tr>
                 </thead>
+                
                 <tbody>
+                    
                     @foreach($pesertas as $peserta)
                     <tr>
                         <td class="border px-4 py-2">{{ $peserta->urutan }}</td>
                         <td class="border px-4 py-2">{{ $peserta->nama }}</td>
                         <td class="border px-4 py-2 text-center">
-                            @if($peserta->aktif == false)
+                            @if($peserta->aktif == false && $peserta->tahap != 4)
                                 <button wire:click="aktivasi('{{$peserta->id}}')" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">#</button>
                             @else
                             @switch($peserta->tahap)
@@ -47,30 +54,34 @@
                                     <button wire:click="tahapan({{$peserta->id}},3)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">|</button>
                                 @break
                                 @case(3)
-                                    <button wire:click="tahapan({{$peserta->id}},1)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">></button>
-                                    <button wire:click="tahapan({{$peserta->id}},2)" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">=</button>
-                                    <button wire:click="tahapan({{$peserta->id}},3)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">|</button>
+                                <button wire:click="tahapan({{$peserta->id}},4)" class="bg-gray-500 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full">\</button>
+                                @break
+                                @case(4)
+                                <button disabled class="bg-gray-500 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full">FINISH</button>
                                 @break
                             @endswitch
                             @endif
                             
                         </td>
-                        <td class="border px-4 py-2">@if($peserta->nilai == -1) {{ "BELUM" }} @else {{ $peserta->nilai }} @endif</td>
+                        <td class="border px-4 py-2 font-bold text-center">@if($peserta->nilai == -1) {{ "BELUM" }} @else {{ round($peserta->nilai, 2) }} @endif</td>
                         <td class="border px-4 py-2">
                             @if($peserta->nilai == -1) 
                                 {{ "-" }} 
                             @elseif($peserta->nilai >= 80) 
-                                {{ "GOLD" }}
+                                <img src="{{('img/gold.png')}}" style="width:40px;height:40px;display:inline"/> {{ "GOLD" }}
                             @elseif($peserta->nilai >= 70)
-                                {{ "SILVER" }}
+                                <img src="{{('img/silver.png')}}"  style="width:40px;height:40px;display:inline"/> {{ "SILVER" }}
                             @else
-                                {{ "BRONZE" }}
+                                <img src="{{('img/bronze.png')}}"  style="width:40px;height:40px;display:inline"/> {{ "BRONZE" }}
                             @endif
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </table> 
+            @endif
+            <div style="height:20px;"></div>
+            <p class="font-bold">supported by: <img src="{{ url('img/himasi.png')}}" style="width:40px;height:40px;display:inline"/> Himpunan Mahasiswa Sistem Informasi Polnustar</p>          
         </div>
     </div>
 </div>
