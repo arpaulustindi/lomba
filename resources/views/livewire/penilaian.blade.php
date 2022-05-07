@@ -1,9 +1,16 @@
 <x-slot name="header">
-    
-    
-    
+  <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">     
+    @if(auth()->user()->level == 'JURI')
+    HALAMAN PENJURIAN
+    @else
+    ANDA TIDAK DIPERBOLEHKAN MENGAKSES HALAMAN INI
+    @endif
+</h2>
+
 </x-slot>
+
 <div class="py-12">
+  @if(auth()->user()->level == 'JURI')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
         @if($pesertas == null)
           Tidak Ada Peserta Aktif
@@ -60,4 +67,5 @@
             <p class="font-bold">supported by: <img src="{{ url('img/himasi.png')}}" style="width:40px;height:40px;display:inline"/> Himpunan Mahasiswa Sistem Informasi Polnustar</p>
         </div>
     </div>
+    @endif
 </div>
