@@ -33,4 +33,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+});
+Route::get('/coba', function () {
+    return view('coba');
+});
+Route::get('/live', function () {
+    return view('live');
 });
