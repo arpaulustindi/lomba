@@ -6,6 +6,7 @@ use App\Http\Livewire\Pesertas;
 use App\Http\Livewire\Juris;
 use App\Http\Livewire\Onboard;
 use App\Http\Livewire\Penilaian;
+use App\Http\Livewire\Live;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,7 @@ Route::get('pesertas/{idx}', Pesertas::class)->middleware('auth')->name('peserta
 Route::get('juris', Juris::class)->middleware('auth')->name('juri');
 Route::get('onboard', Onboard::class)->middleware('auth')->name('onboard');
 Route::get('penilaian', Penilaian::class)->middleware('auth')->name('penilaian');
+Route::get('live', Live::class)->name('live');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -38,6 +40,6 @@ Route::middleware([
 Route::get('/coba', function () {
     return view('coba');
 });
-Route::get('/live', function () {
+/*Route::get('/live', function () {
     return view('live');
-});
+});*/

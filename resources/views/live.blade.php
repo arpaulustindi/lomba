@@ -28,6 +28,7 @@
         padding: 20px;
       }
       </style>
+
   </head>
   <body>
     <div class="container-scroller">
@@ -77,7 +78,15 @@
                     <img src="{{url('theme/assets/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Sedang Tampil <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h3 class="mb-5">GMIST Jemaat Kendaghe Ruata Tahuna</h3>
+                    <h3 class="mb-5">
+                      @if($peserta == null)
+                        Tidak Ada Peserta Aktif
+                      @elseif($peserta->tahap == 4)
+                        Tidak Ada Peserta Aktif
+                      @else
+                        Penilaian Untuk Peserta : <div wire:poll>{{$peserta->nama}}</div>
+                      @endif
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -131,7 +140,7 @@
                                 <label class="badge badge-gradient-warning">GOLD</label>
                               </td>
                               <td> GMIST Jemaat Eklesia Tahuna </td>
-                              <td> 93,01 </td>
+                              <td class="font-weight-bold"> 93,01 </td>
                             </tr>
                             <tr>
                               <td> 2 </td>
