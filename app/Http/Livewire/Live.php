@@ -16,7 +16,7 @@ class Live extends Component
     {
         $this->lbx = DB::table('lombas')->where('aktif','=','1')->value('id');
         $this->lombas = Lomba::findOrFail($this->lbx);
-        $this->px = DB::table('pesertas')->where('aktif','=','1')->value('id');
+        $this->px = DB::table('pesertas')->where('lomba_id','=',$this->lbx)->where('aktif','=','1')->value('id');
         $this->peserta = Peserta::find($this->px);
         //$this->pesertas = Peserta::where('nilai','<>','-1')->orderBy('nilai','DESC')->get();
         $this->pesertas = Peserta::query()
