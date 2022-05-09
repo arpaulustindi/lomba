@@ -110,7 +110,7 @@
                             <tbody>  
                               @foreach($pesertas as $peserta_)                      
                               <tr>
-                                <td style="width:10%"> <h3>{{$peserta_->rank}} </h3></td>
+                                <td style="width:10%"> <h3>{{$peserta_->juara}} </h3></td>
                                 <td style="width:30%" class="text-left">
                                   @if($peserta_->nilai == -1) 
                                       {{ "BELUM" }} 
