@@ -39,6 +39,8 @@
                         @if($lombas != null)
                           @if($peserta == null)
                             Tidak Ada Peserta Aktif
+                          @elseif($peserta->tahap == 4)
+                            TIDAK AKTIF
                           @elseif($peserta->nilai == -1)
                             BELUM DINILAI
                           @else
@@ -63,6 +65,8 @@
                         @if($lombas != null)
                           @if($peserta == null)
                             Tidak Ada Peserta Aktif
+                          @elseif($peserta->tahap == 4)
+                            TIDAK AKTIF
                           @elseif($peserta->nilai == -1) 
                               {{ "BELUM" }} 
                           @elseif($peserta->nilai >= 80) 
